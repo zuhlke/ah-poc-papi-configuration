@@ -1,3 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hsbc.papi.configuration.sapiClientConf,\
-com.hsbc.papi.configuration.HealthMetricsConf
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.hsbc.papi.spring-boot-starter.client.SapiClientConfig

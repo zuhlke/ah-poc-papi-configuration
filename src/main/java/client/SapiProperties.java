@@ -1,3 +1,5 @@
+package client;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "hsbc.sapi")
