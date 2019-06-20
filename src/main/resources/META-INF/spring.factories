@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.hsbc.papi.configuration.sapiClientConf,\
+com.hsbc.papi.configuration.HealthMetricsConf
