@@ -1,6 +1,7 @@
 package sapi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -28,23 +29,10 @@ public class SapiClient<T> {
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .onStatus(HttpStatus::isError, response -> Mono.error(new SapiApiException(API_ERROR + ": " + response.statusCode())))
-                .bodyToMono(SapiResponse.class)
-                .map(SapiResponse::getData)
+                .bodyToMono(new ParameterizedTypeReference<List<T>>() {
+                })
                 .retryWhen(Retry.any()
                         .fixedBackoff(Duration.ofSeconds(sapiProperties.getBackoff()))
                         .retryMax(sapiProperties.getRetries()));
-    }
-
-    private class SapiResponse {
-
-        private List<T> data;
-
-        public List<T> getData() {
-            return data;
-        }
-
-        public void setData(List<T> data) {
-            this.data = data;
-        }
     }
 }
