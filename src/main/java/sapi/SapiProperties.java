@@ -1,4 +1,4 @@
-package client;
+package sapi;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

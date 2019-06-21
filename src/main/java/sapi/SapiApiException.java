@@ -1,4 +1,4 @@
-package client;
+package sapi;
 
 /**
  * Exception thrown by failed API calls
